@@ -22,7 +22,7 @@ if (!empty($_GET['clube'])) {
 
         // Verificar se o clube existe
         if ($stmt->rowCount() > 0) {
-            $clube = $stmt->fetch(PDO::FETCH_ASSOC);
+//            $clube = $stmt->fetch(PDO::FETCH_ASSOC);
 
             // Preencher os valores nos campos do formulário
             $id_clube = $clube['id_clube'];
@@ -30,16 +30,16 @@ if (!empty($_GET['clube'])) {
             $tema = $clube['tema'];
             $dataCriacao = $clube['data_criacao'];
         } else {
-            echo "Clube não encontrado.";
             die();
+            header('Location: home.php?msgErro=Clube não encontrado!');
         }
     } catch (PDOException $erro) {
-        echo "Erro: " . $erro->getMessage();
         die();
+        header('Location: home.php?msgErro=Erro ao alterar clube!');
     }
 } else {
-    echo "Nome do clube não fornecido.";
     die();
+    header('Location: home.php?msgErro=Clube não encontrado!');
 }
 ?>
 
