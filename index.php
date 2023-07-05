@@ -6,6 +6,8 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Pagina Inicial</title>
+    <link rel="stylesheet" href="styles.css">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
@@ -26,15 +28,15 @@
     <h1>LiteraClube</h1>
     <form action="processa_login.php" method="post">
         <div class="col-4">
-            <label for="email">E-mail</label>
-            <input type="email" name="email" id="email" class="form-control">
+            <label for="login">Login</label>
+            <input type="text" name="login" id="login" class="form-control">
         </div>
         <div class="col-4">
             <label for="senha">Senha</label>
             <input type="password" name="senha" id="senha" class="form-control">
         </div>
-        <button type="submit" name="enviarDados" class="btn btn-primary">Entrar</button>
-        <a href="cad_usuario.php" class="btn btn-warning">Cadastrar-se</a>
+        <button type="submit" name="enviarDados" class="btn btn-primary mt-3">Entrar</button>
+        <a href="cad_usuario.php" class="btn btn-warning mt-3">Cadastrar-se</a>
 
     </form>
 

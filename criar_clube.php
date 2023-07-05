@@ -3,7 +3,7 @@ require_once "connectBD.php";
 session_start();
 
 if (empty($_SESSION)) {
-    header("Location: index.php?msgErro=Você precisa se autenticar no sistema.");
+    header("Location: index.php?msgErro=Voce precisa se autenticar no sistema.");
     die();
 }
 ?>
@@ -18,6 +18,9 @@ if (empty($_SESSION)) {
     <title>Cadastro de livros</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+
+
 </head>
 <body>
 
@@ -33,25 +36,31 @@ if (empty($_SESSION)) {
     </div>
 <?php } ?>
 
-
-
-<!--this page contain a form register a new club, contains name,participants(seperated by comma) -->
-<form action="processa_cad_clube.php" method="post">
-    <div class="container col-md-11">
+<div class="container">
+    <div class="col-md-6">
         <h2 class="title">Cadastro de Clube</h2>
 
-        <div class="col-4">
-            <label for="nome">Nome</label>
-            <input type="text" name="nome" id="nome" class="form-control">
-        </div>
-        <div class="col-4">
-            <label for="participantes">Participantes</label>
-            <input type="text" name="participantes" id="participantes" class="form-control">
-        </div>
+        <form action="processa_cad_clube.php" method="post">
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" name="nome" id="nome" class="form-control campo">
+            </div>
 
-        <a href="home.php" class="btn btn-dark">Voltar</a>
-        <button type="submit" name="enviarDados" class="btn btn-success">Enviar</button>
+            <div class="form-group">
+                <label for="tema">Tema</label>
+                <input type="text" name="tema" id="tema" class="form-control campo">
+            </div>
 
-</form>
+            <div class="form-group">
+                <label for="telefone">Telefone</label>
+                <input type="text" name="telefone" id="telefone" class="form-control campo">
+            </div>
+
+            <a href="home.php" class="btn btn-dark mt-3">Voltar</a>
+
+            <button type="submit" name="enviarDados" class="btn btn-success mt-3">Enviar</button>
+        </form>
+    </div>
+</div>
 </body>
 </html>

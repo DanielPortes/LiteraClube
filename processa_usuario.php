@@ -9,31 +9,30 @@ require_once "connectBD.php";
 if (!empty($_POST)) {
     try {
         $nome = $_POST['nome'];
-        $data_nascimento = $_POST['data_nascimento'];
-        $email = $_POST['email'];
+        $data_nasc = $_POST['data_nasc'];
+        $login = $_POST['login'];
         $senha = md5($_POST['senha']);
+        $email = $_POST['email'];
 
-        $sql = "INSERT INTO leitor 
-                    (nome, data_nascimento, email, senha) 
-                VALUES
-                    (:nome, :data_nascimento, :email, :senha)";
+        $sql = "INSERT INTO leitor (nome, data_nasc, login, senha, email)
+                VALUES (:nome, :data_nasc, :login, :senha, :email)";
 
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':nome', $nome);
-        $stmt->bindParam(':data_nascimento', $data_nascimento);
-        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':data_nasc', $data_nasc);
+        $stmt->bindParam(':login', $login);
         $stmt->bindParam(':senha', $senha);
+        $stmt->bindParam(':email', $email);
 
         if ($stmt->execute()) {
             header('Location: index.php?msgSucesso=Usuario cadastrado com sucesso!');
         }
 
     } catch (PDOException $erro) {
-//        die($erro->getMessage());
         header('Location: cad_usuario.php?msgErro=Erro ao cadastrar usuario!');
+        die($erro->getMessage());
     }
-}
-else {
+} else {
     header('Location: index.php?msgErro=Erro de acesso!');
 }
 die();

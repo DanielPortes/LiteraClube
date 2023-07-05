@@ -32,6 +32,10 @@
         <div class="col-4"><label for="data_nascimento">Data de Nascimento</label>
             <input type="date" name="data_nascimento" id="data_nascimento" class="form-control">
         </div>
+        <div class="col-4"><label for="login">Login</label>
+            <input type="text" name="login" id="login" class="form-control">
+        </div>
+
         <div class="col-4"><label for="email">E-mail</label>
             <input type="email" name="email" id="email" class="form-control">
         </div>
@@ -39,8 +43,8 @@
             <input type="password" name="senha" id="senha" class="form-control">
         </div>
 
-        <a href="index.php" class="btn btn-danger">Cancelar</a>
-        <button type="submit" name="enviarDados" class="btn btn-primary">Cadastrar</button>
+        <a href="index.php" class="btn btn-danger mt-3">Cancelar</a>
+        <button type="submit" name="enviarDados" class="btn btn-primary mt-3">Cadastrar</button>
     </form>
 </div>
 

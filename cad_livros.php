@@ -3,7 +3,7 @@ require_once "connectBD.php";
 session_start();
 
 if (empty($_SESSION)) {
-    header("Location: index.php?msgErro=Você precisa se autenticar no sistema.");
+    header("Location: index.php?msgErro=Voce precisa se autenticar no sistema.");
     die();
 }
 ?>
