@@ -1,11 +1,16 @@
 <?php
 
 require_once "connectBD.php";
+session_start();
 
+if (empty($_SESSION)) {
+    header("Location: index.php?msgErro=Voce precisa se autenticar no sistema.");
+    die();
+}
 // Verificar se foi fornecido o ID do clube
-if (!empty($_GET['clube'])) {
+if (!empty(urldecode($_GET['clube']))) {
     try {
-        $nomeClube = $_GET['clube'];
+        $nomeClube = urldecode($_GET['clube']);
 
         // Consulta para obter os dados do clube
         $sql = "SELECT * FROM clube WHERE nome = :nome";

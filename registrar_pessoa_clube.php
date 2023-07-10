@@ -8,12 +8,13 @@ if (empty($_SESSION)) {
 }
 
 // resgate todos leitor pertencentes ao clube
-if (!empty($_GET['clube'])) {
+if (!empty(urldecode($_GET['clube']))) {
     try {
+        $clube = urldecode($_GET['clube']);
 //        consulta dados clube
         $sqlClube = "SELECT * FROM clube WHERE nome = :clube";
         $stmtClube = $pdo->prepare($sqlClube);
-        $stmtClube->bindParam(':clube', $_GET['clube']);
+        $stmtClube->bindParam(':clube',  $clube);
         if ($stmtClube->execute()) {
             $clube = $stmtClube->fetch();
         } else {
@@ -25,7 +26,7 @@ if (!empty($_GET['clube'])) {
 
         $stmt = $pdo->prepare($sql);
 
-        $stmt->bindParam(':clube', $_GET['clube']);
+        $stmt->bindParam(':clube',  $clube);
 
         if ($stmt->execute()) {
             $leitores = $stmt->fetchAll();
@@ -49,7 +50,7 @@ if (!empty($_GET['clube'])) {
     <meta name="viewport"
           content="width = device - width, user - scalable = no, initial - scale = 1.0, maximum - scale = 1.0, minimum - scale = 1.0">
     <meta http-equiv="X - UA - Compatible" content="ie = edge">
-    <title>Clube <?php echo $_GET['clube'] ?></title>
+    <title>Clube <?php echo urldecode($_GET['clube']) ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
@@ -71,7 +72,7 @@ if (!empty($_GET['clube'])) {
 
 
 <div class="container col - md - 11">
-    <h2 class="title">Clube <?php echo $_GET['clube'] ?></h2>
+    <h2 class="title">Clube <?php echo urldecode($_GET['clube']) ?></h2>
 
 <!--crie um formulario para preencher dados de um novo leitor, fornecendo o login deste-->
     <form action="processa_leitor_clube.php" method="post">
@@ -79,7 +80,7 @@ if (!empty($_GET['clube'])) {
             <label for="login" class="form-label">Adicionar nova pessoa</label>
             <input type="text" class="form-control" id="login" name="login">
         </div>
-        <input type="hidden" name="clube" value="<?= $_GET['clube'] ?>">
+        <input type="hidden" name="clube" value="<?= urldecode($_GET['clube']) ?>">
         <button type="submit" class="btn btn-primary">Registrar</button>
     </form>
 

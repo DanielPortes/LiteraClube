@@ -56,7 +56,6 @@ try {
     <h2 class="title">Ola, <?php echo $_SESSION['nome'] ?></h2>
 </div>
 
-<!--tabelar todos os clubes, incluir botoes de de se registrar,excluir, alterar -->
 <div class="container col-md-11">
     <h2 class="title">Clubes</h2>
     <table class="table table-striped">
@@ -73,9 +72,9 @@ try {
                 <td><?= $club['nome'] ?></td>
                 <td><?= $club['tema'] ?></td>
                 <td>
-                    <a href="registrar_pessoa_clube.php?clube=<?= $club['nome'] ?>" class="btn btn-primary">Registrar-se</a>
-                    <a href="alterar_clube.php?clube=<?= $club['nome'] ?>" class="btn btn-warning">Alterar</a>
-                    <a href="excluir_clube.php?clube=<?= $club['nome'] ?>" class="btn btn-danger">Excluir</a>
+                    <a href="registrar_pessoa_clube.php?clube=<?= urlencode($club['nome']) ?>" class="btn btn-primary">Registrar-se</a>
+                    <a href="alterar_clube.php?clube=<?= urlencode($club['nome']) ?>" class="btn btn-warning">Alterar</a>
+                    <a href="excluir_clube.php?clube=<?= urlencode($club['nome']) ?>" class="btn btn-danger">Excluir</a>
                 </td>
             </tr>
         <?php } ?>
